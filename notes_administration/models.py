@@ -5,7 +5,7 @@ class Users(models.Model):
     #name = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.TextField()
     email = models.EmailField(default=None)
-    users_id = models.IntegerField()
+    #user_id = models.IntegerField(primary_key=True, auto_created=True)
 
     def publish(self):
         self.save()
@@ -14,11 +14,9 @@ class Users(models.Model):
 
 class Note(models.Model):
     author = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='+')
-    #author = models.ManyToManyField(Users)
-    #author = models.TextField()
     text = models.TextField()
     to_whom = models.TextField()
-    #to_whom = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='+', default=None) 
+    #note_id = models.IntegerField(primary_key=True, auto_created=True)
 
     def publish(self):
         self.save()

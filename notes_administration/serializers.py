@@ -7,9 +7,9 @@ class NoteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Note
-        fields = ('id', 'author', 'text', 'to_whom')
+        fields = '__all__'
 
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
-        fields = ('id', 'name')
+        fields = '__all__'
