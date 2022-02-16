@@ -1,2 +1,14 @@
-# Notes_application
-Application for making notes on Django
+# Notes_app_project
+
+problems:
+
+-1. Тесты!!!
+
+Если запускать python3 manage.py test запускаются не тесты, а автоматическое создание нескольких элементов в таблицу
+
+0. проблемы с admin
+1. auto_create для id     // вроде и так есть
+2. связь человека         // добавила
+3. api  возвращать json (не рендер) // что-то добавила, надо прочекать
+4. тесты (хотя бы один: что работает api) // main page
+5. plugin
