@@ -16,10 +16,10 @@ from rest_framework import viewsets
 from .serializers import NoteSerializer, UsersSerializer
 
 class NoteViewSet(viewsets.ModelViewSet):
-    queryset = Note.objects.all().order_by('note_id')
+    queryset = Note.objects.all().order_by('id')
     serializer_class = NoteSerializer
 
 class UsersViewSet(viewsets.ModelViewSet):
-    queryset = Users.objects.all().order_by('user_id')
+    queryset = Users.objects.all().order_by('id')
     serializer_class = UsersSerializer
 
