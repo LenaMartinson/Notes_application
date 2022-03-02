@@ -17,5 +17,8 @@ class CreatingDb(TestCase):
 
     def test_something(self):
         c = Client()
-        c.get('/api/notes/?format=json')
+        response = c.get('/api/notes/?format=json')
+        self.assertEqual(response.status_code, 200)
+        self.assertJSONEqual(str(response.content, encoding='utf8'),
+         [{"note_id":1,"text":"good","to_whom":"3","author":1}])
    
