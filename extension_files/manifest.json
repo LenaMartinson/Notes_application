@@ -1,0 +1,14 @@
+{
+	"name": "Notes for LinkedIn",
+	"action": {},
+	"manifest_version": 3,
+	"version": "0.1",
+	"description": "Add a field with write function to LinkedIn users",
+	"permissions": [
+	  "activeTab",
+	  "scripting"
+	],
+	"background": {
+	  "service_worker": "background.js"
+	}
+  }
