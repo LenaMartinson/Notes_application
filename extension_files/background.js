@@ -15,7 +15,13 @@ function reddenPage() {
   var main2 = document.getElementsByClassName("artdeco-card ember-view pv-top-card");
   var parent = main2[0].parentNode;
   parent.insertBefore(message, main2[0].nextSibling);
-    
+  let button = document.createElement('button');
+  button.innerHTML = "Submit";
+  button.style = 'yellow';
+  button.onclick = function () {
+    alert("Button is clicked");
+  }
+  parent.insertBefore(button, message);    
 }
    
 chrome.action.onClicked.addListener((tab) => {
