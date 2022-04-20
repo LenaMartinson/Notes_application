@@ -1,8 +1,11 @@
 delete from notes_administration_users;
 insert into notes_administration_users values ('lena', 'lena@lena.lena', 1);
 insert into notes_administration_users values ('ira', 'ira@lena.lena', 2);
+nsert into notes_administration_users values ('ola', 'ola@ola.ola', 3);
 select * from notes_administration_users;
 
 delete from notes_administration_note;
-insert into notes_administration_note values ('good', 'iraa', 1, 1);
+insert into notes_administration_note values ('good message', 'ira', 1, 1);
+insert into notes_administration_note values ('fun person', 'ola', 1, 2);
+insert into notes_administration_note values ('nad disigner', 'lena', 1, 3);
 select * from notes_administration_note;
