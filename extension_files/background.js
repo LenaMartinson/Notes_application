@@ -1,4 +1,4 @@
-function reddenPage() {
+async function reddenPage() {
   /*
   document.body.style.backgroundColor = 'lime';
   let centerX = document.documentElement.clientWidth / 2;
@@ -8,11 +8,19 @@ function reddenPage() {
   elem.style.background = "red";
   */
   //document.body.style.backgroundColor = 'lime';
-  let text = "Hi Lena!";
+  let doc_url_path = document.location.pathname; // чтобы взять потом имя и искать по нему
+
+  let text = "No information";
   let url = "http://127.0.0.1:8000/api/notes/?format=json";
-  let response = fetch(url);
+  let response = await fetch(url);
+  console.log(response);
   if (response.ok) {
-    text = response.text();
+    let all_json = await response.json();
+    //all_json = json.parse(all_json);
+    //console.log(all_json);
+    let data = all_json.find(item => item.to_whom === "lena")
+    //console.log(data);
+    text = data["text"];
   } else {
     text = "bad request";
   }
