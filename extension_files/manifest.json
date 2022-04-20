@@ -6,9 +6,12 @@
 	"description": "Add a field with write function to LinkedIn users",
 	"permissions": [
 	  "activeTab",
-	  "scripting"
+	  "scripting",
+	  "background",
+	  "unlimitedStorage"
 	],
-	"background": {
-	  "service_worker": "background.js"
-	}
+	"background": 
+		{
+		   "service_worker": "background.js"
+		}
   }
