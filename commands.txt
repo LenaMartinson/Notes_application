@@ -4,5 +4,5 @@ insert into notes_administration_users values ('ira', 'ira@lena.lena', 2);
 select * from notes_administration_users;
 
 delete from notes_administration_note;
-insert into notes_administration_note values ('good', 'iraa', 1, 2);
+insert into notes_administration_note values ('good', 'iraa', 1, 1);
 select * from notes_administration_note;
