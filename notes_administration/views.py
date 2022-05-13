@@ -1,3 +1,4 @@
+#from urllib import response
 from django.shortcuts import render
 from .models import Note
 from .models import Users
@@ -23,3 +24,6 @@ class UsersViewSet(viewsets.ModelViewSet):
     queryset = Users.objects.all().order_by('user_id')
     serializer_class = UsersSerializer
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
