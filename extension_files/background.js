@@ -1,5 +1,5 @@
 async function reddenPage() {
-  
+
   // find names
 
   let doc_url_path = document.location.pathname; // чтобы взять потом имя и искать по нему
@@ -23,12 +23,44 @@ async function reddenPage() {
   }
   var all_notes_json = await response.json();
   var all_users_json = await response_users.json();
-  var user_id = all_users_json.find(item => item.name == my_name); //пока живем с идеей что user точно есть в таблице
-  var data = all_notes_json.filter(item => item.author === user_id["user_id"]);
-  var data2  = data.filter(item => item.to_whom === user_name); // пришлось разделить на 2, может это можно исправить
+  var id_of_user = 0;
+  var flag_make_new = 0;
+  if (Object.keys(all_users_json).length != 0) {
+    var user_id = all_users_json.find(item => item.name == my_name);
+    if (Object.keys(user_id).length != 0) {
+      id_of_user = user_id["user_id"];
+    } else {
+      flag_make_new = 1;
+    }
+  } else {
+    flag_make_new = 1;
+  }
+  // если надо, создаем юзера
+  
+  if (flag_make_new == 1) {
+    //console.log("no user");
+    var num = Object.keys(all_users_json).length + 1;
+    let new_user = {
+      name: my_name,
+      email: "mew@mew.com",
+      user_id: num
+    };
+    let resp = await fetch(url_users, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(new_user)
+    });
+    const cont = await resp.json();
+    id_of_user = num;
+  }
+
+  var data = all_notes_json.filter(item => item.author === id_of_user);
+  var data2 = data.filter(item => item.to_whom === user_name); // пришлось разделить на 2, может это можно исправить
   var cnt = 0;
   if (Object.keys(data2).length == 0) {
-    console.log("no note");
+    //console.log("no note");
     text = "";
     // добавляем в наш скачанный json - не нужно вроде
     cnt = Object.keys(all_notes_json).length + 1;
@@ -37,7 +69,7 @@ async function reddenPage() {
       note_id: cnt,
       text: "Empty note",
       to_whom: user_name,
-      author: user_id["user_id"]
+      author: id_of_user
     };
     let resp = await fetch(url_notes, {
       method: 'POST',
@@ -75,7 +107,7 @@ async function reddenPage() {
         note_id: cnt,
         text: note_text,
         to_whom: user_name,
-        author: user_id["user_id"]
+        author: id_of_user
       };
       
       let new_url = "http://127.0.0.1:8000/api/notes/" + cnt + "/?format=json";
@@ -101,3 +133,4 @@ chrome.action.onClicked.addListener((tab) => {
     });
   }
 });
+
