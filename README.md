@@ -5,7 +5,7 @@ This is exctension for Google Chrome, that gives the opportunity to make notes f
 The main idea is to write a small piece of information (something, that won't be written as official information) about person on his profile. For instance, leadership qualities.
 
 For which users is this the most useful? People, who works with a lot of different specialists, for example HR.
-* 
+
 
 Расширение для Google Chrome, позволяющее создавать заметки на любого пользователя в LinkedIn.
 
